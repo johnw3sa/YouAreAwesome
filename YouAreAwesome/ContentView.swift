@@ -9,21 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var message = ""
-    @State private var symbolName = ""
+    @State private var imageName = ""
     var body: some View {
         
         VStack {
             Spacer()
             
-            Image(systemName: symbolName)
+            Image(imageName)
                 .resizable()
                 .scaledToFit()
                 .imageScale(.large)
-                .foregroundStyle(.orange)
+                .clipShape(.rect(cornerRadius: 30))
+                .shadow(radius: 30)
             
             Text(message)
                 .font(.largeTitle)
-                .fontWeight(.ultraLight)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
             
             Spacer()
             
@@ -31,21 +33,18 @@ struct ContentView: View {
                 Button("Press Me!") {
                     let message1 = "You are Awesome!"
                     let message2 = "You are Great!"
-                    let symbolName1 = "hand.thumbsup"
-                    let symbolName2 = "sun.max.fill"
                     message = ( message == message1 ? message2 : message1)
-                    symbolName = ( symbolName == symbolName1 ? symbolName2 : symbolName1)
-
+                    imageName = ( imageName == "image0" ? "image1" : "image0")
                 }
+                .buttonStyle(.borderedProminent)
+                .font(.title2)
             }
-            .buttonStyle(.borderedProminent)
-            .font(.title2)
-            .tint(.orange)
-            .padding()
+           
         }
+        .padding()
     }
 }
-
-#Preview {
-    ContentView()
-}
+    
+    #Preview {
+        ContentView()
+    }
