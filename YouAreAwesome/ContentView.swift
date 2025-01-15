@@ -33,13 +33,9 @@ struct ContentView: View {
                     let message2 = "You are Great!"
                     let symbolName1 = "hand.thumbsup"
                     let symbolName2 = "sun.max.fill"
-                    if message == message1 {
-                        message = message2
-                        symbolName = symbolName1
-                    }else {
-                        message = message1
-                        symbolName = symbolName2
-                    }
+                    message = ( message == message1 ? message2 : message1)
+                    symbolName = ( symbolName == symbolName1 ? symbolName2 : symbolName1)
+
                 }
             }
             .buttonStyle(.borderedProminent)
