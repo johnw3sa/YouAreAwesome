@@ -15,7 +15,15 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            Spacer()
+            
+            Text(message)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.5)
+                .frame(height:  100)
+                .animation(.easeInOut(duration: 0.15), value: message)
             
             Image(imageName)
                 .resizable()
@@ -23,12 +31,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .clipShape(.rect(cornerRadius: 30))
                 .shadow(radius: 30)
-            
-            Text(message)
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundStyle(.red)
-                .multilineTextAlignment(.center)
+                .animation(.default, value: imageName)
             
             Spacer()
             
@@ -37,12 +40,13 @@ struct ContentView: View {
 
                     let messages = [
                         "You are Awesome!",
+                        "When the Genius Bar Needs Help, They Call You!",
                         "You are Great!",
                         "Fabulous? That's You!",
                         "You are Magical!",
                         "You are very Skilled!",
-                        "You have excelled to the highest level!",
-                        "When the Genius Bar Needs Help, They Call You!"
+                        "You have excelled to the highest level!"
+                        
                     ]
 
                     message = messages[messageNumber]
